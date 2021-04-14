@@ -1,0 +1,17 @@
+import pandas as pd
+from math import  gcd
+from functools import reduce
+
+# списки конфет
+list_1 = ['a', 'a', 'a', 'b','b', 'b', 'b', 'c', 'c', 'c', 'c', 'c']
+list_2 = ['a', 'b', 'c', 'a', 'b', 'c', 'c', 'c']
+
+def max_div(list):
+    # количество конфет по типам
+    list_count = pd.DataFrame(list).value_counts().tolist()
+    # попарный перебор максимальных делителей двух чисел
+    max_list = reduce(gcd, list_count)
+    return max_list
+   
+ print('Максимальное количество друзей {}, которым можно раздать конфеты'.format(max_div(list_1)))
+ print('Максимальное количество друзей {}, которым можно раздать конфеты'.format(max_div(list_2)))
